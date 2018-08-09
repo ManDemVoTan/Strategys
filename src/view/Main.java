@@ -1,104 +1,101 @@
 package view;
+
 import java.util.Scanner;
 
 import city.Country;
 import nation.England;
 import nation.Germany;
-import nation.VietNam;
+import nation.Vietnam;
 
 public class Main {
-	Country viet, anh, duc, country = null;
-	Scanner sc;
+    private static Country vietnam, england, germany, country = null;
+    private static Scanner sc = new Scanner(System.in);
 
-	public void init() {
-		sc = new Scanner(System.in);
-		viet = (VietNam) new VietNam();
-		anh = (England) new England();
-		duc = (Germany) new Germany();
-	}
+    private static void init() {
+        vietnam = new Vietnam();
+        england = new England();
+        germany = new Germany();
+    }
 
-	public int getScanInt(Country country) {
-		try {
-			Scanner sc = new Scanner(System.in);
-			int string = sc.nextInt();
-			return string;
-		} catch (Exception e) {
-			System.out.println(country.geterro());
-			return getScanInt(country);
-		}
+    private static int getScanInt(Country country) {
+        try {
+            Scanner sc = new Scanner(System.in);
+            return sc.nextInt();
+        } catch (Exception e) {
+            System.out.println(country.getError());
+            return getScanInt(country);
+        }
 
-	}
+    }
 
-	public int getDiem(Country country) {
-		try {
-			Scanner sc = new Scanner(System.in);
-			int score = sc.nextInt();
-			return score;
-		} catch (Exception e) {
-			System.out.println(country.geterro());
-			return getDiem(country);
-		}
-	}
+    private static int getCountryPoint(Country country) {
+        try {
+            Scanner sc = new Scanner(System.in);
+            return sc.nextInt();
+        } catch (Exception e) {
+            System.out.println(country.getError());
+            return getCountryPoint(country);
+        }
+    }
 
-	public void excuteDiem() {
-		int i = getDiem(country);
-		if (i < 50) {
-			System.out.println(country.unpleased());
-		} else if (50 <= i && i <= 80) {
-			System.out.println(country.fine());
-		} else if (i > 80 && i < 100) {
-			System.out.println( country.good());
-		} else {
-			System.out.println(country.Special());
-		}
-		
-	}
+    private static void executePoint() {
+        int i = getCountryPoint(country);
+        if (i < 50) {
+            System.out.println(country.unplease());
+        } else if (i <= 80) {
+            System.out.println(country.sayFine());
+        } else if (i < 100) {
+            System.out.println(country.sayWell());
+        } else {
+            System.out.println(country.isSpecial());
+        }
 
-	public void changeLangue() {
-		System.out.println("1." + viet.getName());
-		System.out.println("2." + anh.getName());
-		System.out.println("3." + duc.getName());
-		switch (sc.nextInt()) {
-		case 1:
-			country = viet;
-			break;
-		case 2:
-			country = anh;
-			break;
-		case 3:
-			country = duc;
-			break;
-		}
-	}
+    }
 
-	public void changeCity() {
-		country.printHello();
+    private static void changeLanguage() {
+        System.out.println("1." + vietnam.getName());
+        System.out.println("2." + england.getName());
+        System.out.println("3." + germany.getName());
+        switch (sc.nextInt()) {
+            case 1:
+                country = vietnam;
+                break;
+            case 2:
+                country = england;
+                break;
+            case 3:
+                country = germany;
+                break;
+        }
+    }
 
-		for (int i = 0; i < country.getArr().size(); i++) {
-			System.out.println((i + 1) + ". " + country.getArr().get(i).name);
-		}
-		int j = new Main().getScanInt(country);
-		System.out.println(country.citys() + country.getArr().get(j - 1).name + country.temperature()
-				+ country.getArr().get(j - 1).t + " *c");
-		System.out.println(country.Evaluate());
-	
-		
-	}
-	public void bye(){
-		System.out.println();
-		System.err.println(country.Bye());
-	}
-	
+    private static void changeCity() {
+        country.printHello();
 
-	public static void main(String[] args) {
-		Main m;
-		m = new Main();
-		m.init();
-		m.changeLangue();
-		m.changeCity();
-		m.excuteDiem();
-		m.bye();
-		
-	}
+        for (int i = 0; i < country.getArr().size(); i++) {
+            System.out.println((i + 1) + ". " + country.getArr().get(i).name);
+        }
+        int j = getScanInt(country);
+        System.out.println(country.welcomeToCity() + country.getArr().get(j - 1).name + country.getTemperature()
+                + country.getArr().get(j - 1).t + " *c");
+        System.out.println(country.evaluate());
+
+
+    }
+
+    private static void bye() {
+        System.out.println();
+        System.err.println(country.bye());
+    }
+
+
+    public static void main(String[] args) {
+        init();
+        changeLanguage();
+        changeCity();
+        executePoint();
+        bye();
+
+    }
 
 }

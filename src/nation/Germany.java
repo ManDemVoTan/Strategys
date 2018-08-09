@@ -3,18 +3,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import city.Country;
-import city.city;
+import city.City;
 
 public class Germany implements Country {
 	int min = 5, max = 25;
-	ArrayList<city> citiesArrayList;
+	ArrayList<City> citiesArrayList;
 
 	public Germany() {
 		citiesArrayList = new ArrayList<>();
 		Random rd = new Random();
-		citiesArrayList.add(new city(min + rd.nextInt(max - min + 1), "Hamburg"));
-		citiesArrayList.add(new city(min + rd.nextInt(max - min + 1), "Berlin"));
-		citiesArrayList.add(new city(min + rd.nextInt(max - min + 1), "Frankfurt"));
+		citiesArrayList.add(new City(min + rd.nextInt(max - min + 1), "Hamburg"));
+		citiesArrayList.add(new City(min + rd.nextInt(max - min + 1), "Berlin"));
+		citiesArrayList.add(new City(min + rd.nextInt(max - min + 1), "Frankfurt"));
 	}
 
 	@Override
@@ -29,79 +29,79 @@ public class Germany implements Country {
 	}
 
 	@Override
-	public int getTMin() {
+	public int getMinTemperature() {
 		return 0;
 	}
 
 	@Override
-	public int getTMax() {
+	public int getMaxTemperature() {
 		return 0;
 	}
 
 	@Override
-	public ArrayList<city> getArr() {
+	public ArrayList<City> getArr() {
 		return citiesArrayList;
 	}
 
 	@Override
-	public String geterro() {
+	public String getError() {
 		return "Du hast falsch eingegeben! \n Bitte geben Sie folgende Voraussetzungen ein:";
 	}
 
 	@Override
-	public String getDiem() {
+	public String getPoint() {
 		return "Danke";
 
 	}
 
 	@Override
-	public String temperature() {
+	public String getTemperature() {
 		return "Die Temperatur ist jetzt ";
 	}
 
 	@Override
-	public String citys() {
+	public String welcomeToCity() {
 		// TODO Auto-generated method stub
 		return "Sie sind in der Stadt ";
 	}
 
 	@Override
-	public String commet() {
+	public String comment() {
 		// TODO Auto-generated method stub
 
 		return "Bitte geben Sie uns Ihre Punktzahl für die Stadt in der Sie leben! Punkte reichen von 1 bis 100: ";
 	}
 
 	@Override
-	public String good() {
+	public String sayWell() {
 		// TODO Auto-generated method stub
 		return "Willkommen beim nächsten Mal";
 	}
 
 	@Override
-	public String fine() {
+	public String sayFine() {
 		// TODO Auto-generated method stub
 		return "Wir werden es härter versuchen";
 	}
 
 	@Override
-	public String unpleased() {
+	public String unplease() {
 		// TODO Auto-generated method stub
 		return "Es tut mir leid, dich unglücklich zu machen";
 	}
 
 	@Override
-	public String Special() {
+	public String isSpecial() {
 		// TODO Auto-generated method stub
 		return "Internationale Standards";
 	}
 
 	@Override
-	public String Evaluate() {
+	public String evaluate() {
 		// TODO Auto-generated method stub
 		return "Bitte ordnen Sie Ihrer Stadt 1 bis 100 Punkte zu :";
 	}
-	public String Bye() {
+	public String bye() {
 		// TODO Auto-generated method stub
 		return "Auf Wiedersehen und bis bald";
 	}
